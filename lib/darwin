@@ -1,0 +1,23 @@
+
+___x_cmd_gui___notify(){
+    # osascript -e 'display notification "hello world!"'
+    osascript -e '
+    on run(argv)
+        display notification item 1 of argv
+    end' -- "${1:?Provide message}"
+}
+
+___x_cmd_gui___file(){
+    osascript -l javascript -e '
+var app = Application.currentApplication()
+app.includeStandardAdditions = true
+
+var foldersToProcess = app.chooseFolder({
+    withPrompt: "Prompt",
+    multipleSelectionsAllowed: true
+})
+foldersToProcess
+    '
+}
+
+

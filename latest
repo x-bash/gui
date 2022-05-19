@@ -16,6 +16,7 @@ ___x_cmd_gui(){
     esac
 }
 
+# TODO: xfce, lxde
 case "$(x os name)" in
     darwin)     xrc:mod gui/lib/darwin ;;
     win)        xrc:mod gui/lib/win ;;

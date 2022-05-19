@@ -1,0 +1,60 @@
+
+# https://develop.kde.org/deploy/kdialog/
+
+
+___x_cmd_gui___ok(){
+    local title="${1:?Provide title}"
+    local msg="${2:?Provide message}"
+    local timeout="${3:?Provide timeout}"
+    kdialog --title "$title" \
+        --passivepopup \
+        "$msg" $timeout
+}
+
+___x_cmd_gui___dialog(){
+    :
+}
+
+
+
+___x_cmd_gui___notify(){
+    # osascript -e 'display notification "hello world!"'
+    osascript -e '
+    on run(argv)
+        display notification item 1 of argv
+    end' -- "${1:?Provide message}"
+}
+
+___x_cmd_gui___text(){
+    :
+}
+
+___x_cmd_gui___file(){
+    osascript -l javascript -e '
+var app = Application.currentApplication()
+app.includeStandardAdditions = true
+
+var foldersToProcess = app.chooseFolder({
+    withPrompt: "Prompt",
+    multipleSelectionsAllowed: true
+})
+foldersToProcess
+    '
+}
+
+___x_cmd_gui___files(){
+    :
+}
+
+___x_cmd_gui___folders(){
+    :
+}
+
+___x_cmd_gui___fromlist(){
+    :
+}
+
+___x_cmd_gui___progress(){
+    :
+}
+

@@ -1,10 +1,20 @@
 
 ___x_cmd_gui___ok(){
-    :
+    osascript -e '
+    on run(argv)
+        set theResponse to display dialog item 1 of argv with icon note buttons { "OK" } default button "OK"
+        text returned of theResponse
+    end
+    ' -- "${1:?Provide message}" 2>/dev/null
 }
 
 ___x_cmd_gui___dialog(){
-    :
+    osascript -e '
+    on run(argv)
+        set theResponse to display dialog item 1 of argv default answer "" with icon note buttons {"Cancel", "Continue"} default button "Continue"
+
+    end
+    ' -- "${1:?Provide message}"
 }
 
 
@@ -17,7 +27,12 @@ ___x_cmd_gui___notify(){
 }
 
 ___x_cmd_gui___text(){
-    :
+    osascript -e '
+    on run(argv)
+        set theResponse to display dialog item 1 of argv default answer "" with icon note buttons {"Cancel", "OK"} default button "OK"
+        text returned of theResponse
+    end
+    ' -- "${1:-Input text please}" 2>/dev/null
 }
 
 ___x_cmd_gui___file(){
@@ -25,16 +40,25 @@ ___x_cmd_gui___file(){
 var app = Application.currentApplication()
 app.includeStandardAdditions = true
 
-var foldersToProcess = app.chooseFolder({
-    withPrompt: "Prompt",
-    multipleSelectionsAllowed: true
+var document = app.chooseFile({
+    withPrompt: "Please select a document to process:",
+    multipleSelectionsAllowed: false
 })
-foldersToProcess
+document
     '
 }
 
 ___x_cmd_gui___files(){
-    :
+        osascript -l javascript -e '
+var app = Application.currentApplication()
+app.includeStandardAdditions = true
+
+var document = app.chooseFile({
+    withPrompt: "Please select a document to process:",
+    multipleSelectionsAllowed: true
+})
+document
+    '
 }
 
 ___x_cmd_gui___folder(){

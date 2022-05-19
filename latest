@@ -3,16 +3,16 @@
 
 ___x_cmd_gui(){
     local subcmd="$1"
-    case "$1" in
-        ok)             ___x_cmd_gui___ok "$@" ;;
-        dialog)         ___x_cmd_gui___dialog "$@" ;;
-        notify)         ___x_cmd_gui___notify "$@" ;;
-        text)           ___x_cmd_gui___text "$@" ;;
-        file)           ___x_cmd_gui___file "$@" ;;
-        files)          ___x_cmd_gui___files "$@" ;;
-        folders)        ___x_cmd_gui___folders "$@" ;;
-        fromlist)       ___x_cmd_gui___fromlist "$@" ;;
-        progress)       ___x_cmd_gui___progress "$@" ;;
+    case "$subcmd" in
+        ok)             shift; ___x_cmd_gui___ok "$@" ;;
+        dialog)         shift; ___x_cmd_gui___dialog "$@" ;;
+        notify)         shift; ___x_cmd_gui___notify "$@" ;;
+        text)           shift; ___x_cmd_gui___text "$@" ;;
+        file)           shift; ___x_cmd_gui___file "$@" ;;
+        files)          shift; ___x_cmd_gui___files "$@" ;;
+        folders)        shift; ___x_cmd_gui___folders "$@" ;;
+        fromlist)       shift; ___x_cmd_gui___fromlist "$@" ;;
+        progress)       shift; ___x_cmd_gui___progress "$@" ;;
     esac
 }
 

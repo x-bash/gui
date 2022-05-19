@@ -1,10 +1,24 @@
 
+___x_cmd_gui___ok(){
+    :
+}
+
+___x_cmd_gui___dialog(){
+    :
+}
+
+
+
 ___x_cmd_gui___notify(){
     # osascript -e 'display notification "hello world!"'
     osascript -e '
     on run(argv)
         display notification item 1 of argv
     end' -- "${1:?Provide message}"
+}
+
+___x_cmd_gui___text(){
+    :
 }
 
 ___x_cmd_gui___file(){
@@ -20,4 +34,18 @@ foldersToProcess
     '
 }
 
+___x_cmd_gui___files(){
+    :
+}
 
+___x_cmd_gui___folders(){
+    :
+}
+
+___x_cmd_gui___fromlist(){
+    :
+}
+
+___x_cmd_gui___progress(){
+    :
+}

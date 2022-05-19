@@ -19,7 +19,17 @@ ___x_cmd_gui(){
 case "$(x os name)" in
     darwin)     xrc:mod gui/lib/darwin ;;
     win)        xrc:mod gui/lib/win ;;
-    linux)      xrc:mod gui/lib/linux ;;
+    linux)
+        if command -v kdialog 2>/dev/null; then
+            xrc:mod gui/lib/linux_kdialog
+        elif command -v zenity 2>/dev/null; then
+            xrc:mod gui/lib/linux_zenity
+        else
+            xrc:mod gui/lib/term
+        fi
+        ;;
+    *)
+        xrc:mod gui/lib/term
 esac
 
 xrc setmain ___x_cmd_gui

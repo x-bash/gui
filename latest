@@ -4,15 +4,15 @@
 ___x_cmd_gui(){
     local subcmd="$1"
     case "$1" in
-        ok-cancel)      ;;
-        buttons)        ;;
+        ok)             ___x_cmd_gui___ok "$@" ;;
+        dialog)         ___x_cmd_gui___dialog "$@" ;;
         notify)         ___x_cmd_gui___notify "$@" ;;
-        text)           ;;
+        text)           ___x_cmd_gui___text "$@" ;;
         file)           ___x_cmd_gui___file "$@" ;;
-        files)          ;;
-        folders)        ;;
-        fromlist)       ;;
-        progress)       ;;
+        files)          ___x_cmd_gui___files "$@" ;;
+        folders)        ___x_cmd_gui___folders "$@" ;;
+        fromlist)       ___x_cmd_gui___fromlist "$@" ;;
+        progress)       ___x_cmd_gui___progress "$@" ;;
     esac
 }
 

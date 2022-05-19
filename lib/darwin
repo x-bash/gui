@@ -14,11 +14,9 @@ ___x_cmd_gui___dialog(){
     osascript -e '
     on run(argv)
         set theResponse to display dialog item 1 of argv default answer "" with icon note buttons {"Cancel", "Continue"} default button "Continue"
-
     end
     ' -- "${1:?Provide message}"
 }
-
 
 ___x_cmd_gui___notify(){
     # osascript -e 'display notification "hello world!"'

@@ -4,15 +4,11 @@
 ___x_cmd_gui(){
     local subcmd="$1"
     case "$subcmd" in
-        ok)             shift; ___x_cmd_gui___ok "$@" ;;
-        dialog)         shift; ___x_cmd_gui___dialog "$@" ;;
-        notify)         shift; ___x_cmd_gui___notify "$@" ;;
-        text)           shift; ___x_cmd_gui___text "$@" ;;
-        file)           shift; ___x_cmd_gui___file "$@" ;;
-        files)          shift; ___x_cmd_gui___files "$@" ;;
-        folders)        shift; ___x_cmd_gui___folders "$@" ;;
-        fromlist)       shift; ___x_cmd_gui___fromlist "$@" ;;
-        progress)       shift; ___x_cmd_gui___progress "$@" ;;
+        ok|dialog|text \
+        |file|files|folders \
+        |notify \
+        |fromlist \
+        |progress)       shift;" ___x_cmd_gui___${subcmd}" "$@" ;;
     esac
 }
 

@@ -2,50 +2,52 @@
 
 
 ___x_cmd_gui___ok(){
-    :
+    zenity --info --text="${1:?Provide message}"
 }
 
 ___x_cmd_gui___dialog(){
-    :
+    # question info error warning
+    zenity --error \
+        --title="${1:?Provide title}" \
+        --text="${2:?Provide message}"
 }
 
 
 
 ___x_cmd_gui___notify(){
-    # osascript -e 'display notification "hello world!"'
-    osascript -e '
-    on run(argv)
-        display notification item 1 of argv
-    end' -- "${1:?Provide message}"
+    zenity --notification --text "${1:?Provide message}"
 }
 
 ___x_cmd_gui___text(){
-    :
+    zenity --entry --title "${1:?Provide title}" --text "${2:-Input text please}"
 }
 
 ___x_cmd_gui___file(){
-    osascript -l javascript -e '
-var app = Application.currentApplication()
-app.includeStandardAdditions = true
-
-var foldersToProcess = app.chooseFolder({
-    withPrompt: "Prompt",
-    multipleSelectionsAllowed: true
-})
-foldersToProcess
-    '
+    zenity --file-selection --filename "/"
 }
 
 ___x_cmd_gui___files(){
-    :
+    zenity --file-selection --multiple --filename "/"
+}
+
+___x_cmd_gui___folder(){
+    zenity --file-selection --folder "/"
 }
 
 ___x_cmd_gui___folders(){
-    :
+    zenity --file-selection --multiple --folder "/"
 }
 
-___x_cmd_gui___fromlist(){
-    :
+___x_cmd_gui___select(){
+    zenity --list  --title "Choose Processor" --radiolist \
+        --column "ID" --column="Name" 1 AMD 2 Intel
+}
+
+___x_cmd_gui___multiselect(){
+    zenity --list --title "Packages" --list  \
+        --text "select packages you want to install" --checklist \
+        --column "id"  \
+        --column "Name" 1 "Google Chrome" 2 "VLC" 3 "Firefox" 4 "GIMP"
 }
 
 ___x_cmd_gui___progress(){

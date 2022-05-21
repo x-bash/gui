@@ -4,7 +4,8 @@
 ___x_cmd_gui(){
     local subcmd="$1"
     case "$subcmd" in
-        ok|dialog|text \
+        ok|dialog\
+        |text|password \
         |file|files|folders \
         |notify \
         |fromlist \

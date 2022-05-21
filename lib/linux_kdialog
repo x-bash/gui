@@ -29,6 +29,11 @@ ___x_cmd_gui___text(){
     :
 }
 
+___x_cmd_gui___password(){
+    :
+}
+
+
 ___x_cmd_gui___file(){
     osascript -l javascript -e '
 var app = Application.currentApplication()

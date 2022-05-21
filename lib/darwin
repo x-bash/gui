@@ -35,6 +35,15 @@ ___x_cmd_gui___text(){
     ' -- "${1:-Input text please}" 2>/dev/null
 }
 
+___x_cmd_gui___password(){
+    osascript -e '
+    on run(argv)
+        set theResponse to display dialog item 1 of argv default answer "" with icon note buttons {"Cancel", "OK"} default button "OK"
+        text returned of theResponse
+    end
+    ' -- "${1:-Input text please}" 2>/dev/null
+}
+
 ___x_cmd_gui___file(){
     osascript -l JavaScript -e '
 var app = Application.currentApplication()

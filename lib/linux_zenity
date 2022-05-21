@@ -22,6 +22,10 @@ ___x_cmd_gui___text(){
     zenity --entry --title "${1:?Provide title}" --text "${2:-Input text please}"
 }
 
+___x_cmd_gui___password(){
+    zenity --entry --title "${1:?Provide title}" --text "${2:-Input text please}"
+}
+
 ___x_cmd_gui___file(){
     zenity --file-selection --filename "/"
 }
